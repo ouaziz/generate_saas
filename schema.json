@@ -1,0 +1,21 @@
+{
+    "project": "SaaS Invoicing",
+    "models": [
+      {
+        "name": "Client",
+        "fields": {
+          "name": "CharField(max_length=255)",
+          "email": "EmailField(unique=True)"
+        }
+      },
+      {
+        "name": "Invoice",
+        "fields": {
+          "client": "ForeignKey(Client,on_delete=CASCADE)",
+          "amount": "DecimalField(max_digits=10,decimal_places=2)",
+          "status": "CharField(choices=[('paid', 'Paid'), ('draft', 'Draft'), ('pending', 'Pending')])"
+        }
+      }
+    ]
+  }
+  
