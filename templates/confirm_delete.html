@@ -1,0 +1,21 @@
+{% extends 'backoffice/master.html' %}
+{% load i18n %}
+{% block title %}Delete {{ context.name }}{% endblock %}
+{% block header %}
+  {% include 'backoffice/header.html' with title="Delete {{ context.name }}" %}
+{% endblock %}
+{% block layout %}
+<div class="container-xl px-4 ">
+  <div class="card mb-4">
+    <div class="card-header">Delete {{ context.name }}</div>
+    <div class="card-body">
+      <p>Are you sure you want to delete the {{ context.name }} <strong>{{ {{ context.name|lower }}.name }}</strong>?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url '{{ context.name|lower }}-list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

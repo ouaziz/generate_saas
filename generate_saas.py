@@ -1,14 +1,28 @@
 import json
 import os
 from jinja2 import Template
+import shutil
 
 with open("schema.json") as f:
     schema = json.load(f)
 
 PROJECT_NAME = schema["project"]
 MODELS = schema["models"]
+TEMPLATES = schema["templates"]
 
 os.makedirs("generated", exist_ok=True)
+
+
+# ==== templates ===
+#  reade templatefrom templates/ and create 4 files for each template with schema.json
+for template in TEMPLATES:
+    os.makedirs(f"generated/templates/{template['name']}", exist_ok=True)
+    name = template["name"]
+    files = template["files"]
+    shutil.copy(f"templates/{files['list']}", f"generated/templates/{name}/{files['list']}")
+    shutil.copy(f"templates/{files['detail']}", f"generated/templates/{name}/{files['detail']}")
+    shutil.copy(f"templates/{files['confirm_delete']}", f"generated/templates/{name}/{files['confirm_delete']}")
+    shutil.copy(f"templates/{files['form']}", f"generated/templates/{name}/{files['form']}")
 
 # === models.py ===
 model_template = Template("""

@@ -1,0 +1,28 @@
+{% extends 'backoffice/master.html' %}
+{% load i18n %}
+{% block title %}
+  {% if object %}Edit {{ model.name }}{% else %}Add {{ model.name }}{% endif %}
+{% endblock %}
+{% block header %}
+  {% include 'backoffice/header.html' with title=object|yesno:'Edit {{ model.name }},Add {{ model.name }}' %}
+{% endblock %}
+{% block layout %}
+{% include 'backoffice/message.html' %}
+<div class="container-xl px-4 ">
+  <div class="card mb-4">
+    <div class="card-header">{% if object %}Edit {{ model.name }}{% else %}Add {{ model.name }}{% endif %}</div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if object %}
+          <button type="submit" class="btn  btn-primary">Update {{ context.name }}</button>
+        {% else %}
+          <button type="submit" class="btn  btn-primary">Create {{ context.name }}</button>
+        {% endif %}
+        <a href="{% url '{{ context.name|lower }}-list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

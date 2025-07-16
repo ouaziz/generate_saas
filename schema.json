@@ -16,6 +16,26 @@
           "status": "CharField(choices=[('paid', 'Paid'), ('draft', 'Draft'), ('pending', 'Pending')])"
         }
       }
+    ],
+    "templates": [
+      {
+        "name": "clients",
+        "files": {
+            "list": "client_list.html",
+            "detail": "client_detail.html",
+            "confirm_delete": "client_confirm_delete.html",
+            "form": "client_form.html"
+        }
+      },
+      {
+        "name": "invoices",
+        "files": {
+            "list": "invoice_list.html",
+            "detail": "invoice_detail.html",
+            "confirm_delete": "invoice_confirm_delete.html",
+            "form": "invoice_form.html"
+        }
+      }
     ]
   }
   
