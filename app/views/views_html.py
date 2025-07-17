@@ -6,7 +6,7 @@ from django.views.generic import (
 
 from django.urls import reverse_lazy
 from django.contrib import messages
-from {{ app_name }}.services import list_{{ model_name.lower() }}, get_{{ model_name.lower() }}
+from {{ app_name }}.services.{{ model_name.lower() }} import list_{{ model_name.lower() }}, get_{{ model_name.lower() }}
 from {{ app_name }}.models import {{ model_name }}
 from {{ app_name }}.forms import {{ model_name }}Form
 

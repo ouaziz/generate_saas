@@ -119,6 +119,16 @@ for model in MODELS:
     with open(f"generated/{ app_name.lower() }/views/{name.lower()}/html/views.py", "w") as f:
         f.write(views_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
 
+# === service.py ===
+for model in MODELS:
+    name = model["name"]
+    os.makedirs(f"generated/{ app_name.lower() }/services/{name.lower()}", exist_ok=True)
+    shutil.copy(f"app/services.py", f"generated/{ app_name.lower() }/services/{name.lower()}/services.py")
+    with open("app/services.py", "r") as f:
+        service_template = Template(f.read())
+    with open(f"generated/{ app_name.lower() }/services/{name.lower()}/services.py", "w") as f:
+        f.write(service_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
+
 
 # === api - urls.py ===
 for model in MODELS:
