@@ -18,6 +18,43 @@
         }
       }
     ],
+    "forms": [
+      {
+        "name": "client",
+        "fields": [
+          {
+            "field": "name",
+            "type": "TextInput",
+            "label": "Client name"
+          },
+          {
+            "field": "email",
+            "type": "EmailInput",
+            "label": "Client email"
+          }
+        ]
+      },
+      {
+        "name": "invoice",
+        "fields": [
+          {
+            "field": "client",
+            "type": "Select",
+            "label": "Client"
+          },
+          {
+            "field": "amount",
+            "type": "NumberInput",
+            "label": "Amount"
+          },
+          {
+            "field": "status",
+            "type": "Select",
+            "label": "Status"
+          }
+        ]
+      }
+    ],
     "templates": [
       {
         "name": "clients",

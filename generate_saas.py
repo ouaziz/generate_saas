@@ -15,6 +15,7 @@ with open("schema.json") as f:
 PROJECT_NAME = schema["project"]
 MODELS = schema["models"]
 TEMPLATES = schema["templates"]
+FORMS = schema["forms"]
 
 app_name = schema["app_name"]
 os.makedirs(f"generated/{ app_name }", exist_ok=True)
@@ -149,5 +150,60 @@ for model in MODELS:
         urls_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/urls/{name.lower()}/html/urls.py", "w") as f:
         f.write(urls_template.render(name=name.lower(), app_name=app_name.lower()))
+
+
+# === apps.py ===
+with open("app/apps.py", "r") as f:
+    apps_template = Template(f.read())
+with open(f"generated/{ app_name.lower() }/apps.py", "w") as f:
+    f.write(apps_template.render(app_name=app_name.lower()))
+
+# forms
+for model in MODELS:
+    name = model["name"]
+    shutil.copy(f"app/forms.py", f"generated/{ app_name.lower() }/forms.py")
+    with open("app/forms.py", "r") as f:
+        forms_template = Template(f.read())
+
+    for form in FORMS:
+        name = form["name"]
+        fields = form["fields"]
+        for field in fields:
+            field_name = field["field"]
+            field_type = field["type"]
+            field_label = field["label"]
+            with open(f"generated/{ app_name.lower() }/forms.py", "w") as f:
+                f.write(forms_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
+
+    # 'name': forms.TextInput(attrs={
+    # 'class': 'form-control',
+    # 'placeholder': 'Product name'
+    # }),
+    # 'description': forms.Textarea(attrs={
+    # 'class': 'form-control',
+    # 'rows': 3,
+    # 'placeholder': 'Write a description'
+    # }),
+    # 'image': forms.FileInput(attrs={
+    # 'class': 'form-control'
+    # }),
+    # 'purchase_date': forms.DateInput(attrs={
+    # 'class': 'form-control',
+    # 'type': 'date'
+    # }),
+    # 'price': forms.NumberInput(attrs={
+    # 'class': 'form-control',
+    # 'step': '0.01',
+    # 'placeholder': 'Price'
+    # }),
+    # 'status': forms.CheckboxInput(attrs={
+    # 'class': 'form-check-input'
+    # }),
+    # 'warehouse': forms.Select(attrs={
+    # 'class': 'form-select'
+    # }),
+
+    with open(f"generated/{ app_name.lower() }/forms.py", "w") as f:
+        f.write(forms_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
 
 print(f"✅ Code généré dans le dossier /generated/{ app_name.lower() }")
