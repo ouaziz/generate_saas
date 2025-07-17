@@ -1,12 +1,11 @@
 {% extends 'backoffice/master.html' %}
 
-{% load static %}
-{% load i18n %}
+{{ loads }}
 
-{% block title %}{{ context.name }}{% endblock title %}
+{% block title %}{{ name }}{% endblock title %}
 
 {% block header %}
-  {% include 'backoffice/header.html' with title="{{ context.name }}" %}
+  {% include 'backoffice/header.html' with title="{{ name }}" %}
 {% endblock %}
 
 {% block layout %}
@@ -18,37 +17,37 @@
   {% if perms.products.view_productbrand %}
     <div class="card mb-4 card-header-actions">
       <div class="card-header">
-        {{ context.name }}
+        {{ name }}
         <div class="d-flex gap-2">
-          <a href="{% url '{{ context.name|lower }}-create' %}" class="btn btn-secondary btn-sm ms-2">Add {{ context.name|lower }}</a>
+          <a href="{% url '{{ name }}-create' %}" class="btn btn-secondary btn-sm ms-2">Add {{ name }}</a>
         </div>
       </div>
       <div class="card-body">
         <table id="datatablesSimple">
           <thead class="table-light">
             <tr class="text-nowrap">
-              <th>{{ context.name }}</th>
+              <th>{{ name }}</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {% if {{ context.name|lower }}s %}
-              {% for {{ context.name|lower }} in {{ context.name|lower }}s %}
+            {% if {{ name }}s %}
+              {% for {{ name }} in {{ name }}s %}
               <tr>
                 <td class="text-nowrap fw-medium text-heading">
-                  <a href="{% url '{{ context.name|lower }}-detail' {{ context.name|lower }}.id %}">
-                    {{ {{ context.name|lower }}.name|capfirst }}
+                  <a href="{% url '{{ name }}-detail' {{ name }}.id %}">
+                    {{ {{ name }}.name|capfirst }}
                   </a>
                 </td>
                 <td>
                   <div class="d-inline-block text-nowrap">
                     {% if perms.products.change_productbrand %}
-                      <a href="{% url '{{ context.name|lower }}-edit' {{ context.name|lower }}.id %}" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
+                      <a href="{% url '{{ name }}-edit' {{ name }}.id %}" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </a>
                     {% endif %}
                     {% if perms.products.delete_productbrand %}
-                      <a href="{% url '{{ context.name|lower }}-delete' {{ context.name|lower }}.id %}" class="btn btn-datatable btn-icon btn-transparent-dark">
+                      <a href="{% url '{{ name }}-delete' {{ name }}.id %}" class="btn btn-datatable btn-icon btn-transparent-dark">
                         <i class="fa-regular fa-trash-can"></i>
                       </a>
                     {% endif %}
@@ -59,7 +58,7 @@
             {% else %}
               <tr>
                 <td colspan="3" class="text-center">
-                  No {{ context.name|lower }}s found
+                  No {{ name }}s found
                 </td>
               </tr>
             {% endif %}

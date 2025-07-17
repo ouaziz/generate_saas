@@ -1,0 +1,23 @@
+{% extends 'backoffice/master.html' %}
+
+{{ loads }}
+
+{% block title %}Delete {{ name }}{% endblock %}
+{% block header %}
+  {% include 'backoffice/header.html' with title="Delete {{ name }}" %}
+{% endblock %}
+{% block layout %}
+<div class="container-xl px-4 ">
+  <div class="card mb-4">
+    <div class="card-header">Delete {{ name }}</div>
+    <div class="card-body">
+      <p>Are you sure you want to delete the {{ name }} <strong>{{ {{ name }}.name }}</strong>?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url '{{ name }}-list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

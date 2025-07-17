@@ -1,0 +1,35 @@
+{% extends 'backoffice/master.html' %}
+
+{{ loads }}
+
+{% block title %}{{ name }} Details{% endblock %}
+{% block header %}
+  {% include 'backoffice/header.html' with title="{{ name }} Details" %}
+{% endblock %}
+{% block layout %}
+<div class="container-xl px-4 ">
+  <div class="card mb-4">
+    <div class="card-header">{{ name }} Details</div>
+    <div class="card-body">
+      <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{ {{ name }}.name }}</dd>
+        <dt class="col-sm-3">Description</dt>
+        <dd>
+          <div class="d-inline-block text-nowrap">
+            {{ {{ name }}.description|safe }}
+          </div>
+        </dd>
+        <dt class="col-sm-3">User</dt>
+        <dd class="col-sm-9">{{ {{ name }}.user }}</dd>
+        <dt class="col-sm-3">Created at</dt>
+        <dd class="col-sm-9">{{ {{ name }}.created_at }}</dd>
+        <dt class="col-sm-3">Updated at</dt>
+        <dd class="col-sm-9">{{ {{ name }}.updated_at }}</dd>
+      </dl>
+      <a href="{% url '{{ name }}-edit' {{ name }}.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url '{{ name }}-list' %}" class="btn btn-secondary">Back to list</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

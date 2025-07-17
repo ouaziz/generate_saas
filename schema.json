@@ -1,5 +1,6 @@
 {
     "project": "SaaS Invoicing",
+    "app_name": "invoicing",
     "models": [
       {
         "name": "Client",
@@ -20,21 +21,33 @@
     "templates": [
       {
         "name": "clients",
-        "files": {
-            "list": "client_list.html",
-            "detail": "client_detail.html",
-            "confirm_delete": "client_confirm_delete.html",
-            "form": "client_form.html"
-        }
+        "tables_columns": [
+          {
+            "name": "name",
+            "label": "Name"
+          },
+          {
+            "name": "email",
+            "label": "Email"
+          }
+        ]
       },
       {
         "name": "invoices",
-        "files": {
-            "list": "invoice_list.html",
-            "detail": "invoice_detail.html",
-            "confirm_delete": "invoice_confirm_delete.html",
-            "form": "invoice_form.html"
-        }
+        "tables_columns": [
+          {
+            "name": "client",
+            "label": "Client"
+          },
+          {
+            "name": "amount",
+            "label": "Amount"
+          },
+          {
+            "name": "status",
+            "label": "Status"
+          }
+        ]
       }
     ]
   }
