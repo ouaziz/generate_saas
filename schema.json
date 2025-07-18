@@ -20,7 +20,9 @@
     ],
     "forms": [
       {
-        "name": "client",
+        "name": "Client",
+        "field_select": "",
+        "field_select_label": "",
         "fields": [
           {
             "field": "name",
@@ -35,7 +37,9 @@
         ]
       },
       {
-        "name": "invoice",
+        "name": "Invoice",
+        "field_select": "client",
+        "field_select_label": "Select a client",
         "fields": [
           {
             "field": "client",

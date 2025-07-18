@@ -13,7 +13,7 @@ from {{ app_name }}.forms import {{ model_name }}Form
 
 class List(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     permission_required = ("{{ app_name }}.view_{{ model_name.lower() }}",)
-    template_name = "{{ app_name }}/{{ model_name.lower() }}_list.html"
+    template_name = "{{ model_name.lower() }}s/{{ model_name.lower() }}_list.html"
     context_object_name = "{{ model_name.lower() }}s"
 
     def get_queryset(self):
@@ -30,7 +30,7 @@ class List(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
 class Detail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     permission_required = ("{{ app_name }}.view_{{ model_name.lower() }}",)
-    template_name = "{{ app_name }}/{{ model_name.lower() }}_view.html"
+    template_name = "{{ model_name.lower() }}s/{{ model_name.lower() }}_view.html"
     context_object_name = "{{ model_name.lower() }}"
 
     def get_object(self, queryset=None):
@@ -40,7 +40,7 @@ class Create(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     permission_required = ("{{ app_name }}.add_{{ model_name.lower() }}",)
     model = {{ model_name }}
     form_class = {{ model_name }}Form
-    template_name = "{{ app_name }}/{{ model_name.lower() }}_form.html"
+    template_name = "{{ model_name.lower() }}s/{{ model_name.lower() }}_form.html"
     
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -56,7 +56,7 @@ class Update(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     permission_required = ("{{ app_name }}.change_{{ model_name.lower() }}",)
     model = {{ model_name }}
     form_class = {{ model_name }}Form
-    template_name = "{{ app_name }}/{{ model_name.lower() }}_form.html"
+    template_name = "{{ model_name.lower() }}s/{{ model_name.lower() }}_form.html"
     
     def get_object(self):
         return get_{{ model_name.lower() }}(self.kwargs['pk'])
@@ -72,7 +72,7 @@ class Update(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 class Delete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     permission_required = ("{{ app_name }}.delete_{{ model_name.lower() }}",)
     model = {{ model_name }}
-    template_name = "{{ app_name }}/{{ model_name.lower() }}_confirm_delete.html"
+    template_name = "{{ model_name.lower() }}s/{{ model_name.lower() }}_confirm_delete.html"
     success_url = reverse_lazy("{{ model_name.lower() }}-list")
     
     def get_object(self):

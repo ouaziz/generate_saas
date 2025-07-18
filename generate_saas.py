@@ -3,14 +3,16 @@ import os
 from jinja2 import Template
 import shutil
 
+
 # remove folder
 if os.path.exists("generated"):
     shutil.rmtree("generated")
+print(f"✅ cleaning folder")
  
-
 
 with open("schema.json") as f:
     schema = json.load(f)
+print(f"✅ reading schema.json")
 
 PROJECT_NAME = schema["project"]
 MODELS = schema["models"]
@@ -68,7 +70,8 @@ for template in TEMPLATES:
 
     with open(f"generated/{ app_name.lower() }/templates/{name.lower()}/form.html", "w") as f:
         f.write(template_form.replace("{{ name }}", name).replace("{{ loads }}", static + i18n))
-#======================================================================================================#
+print(f"✅ templates")
+
 # === models.py ===
 model_template = Template("""
 from django.db import models
@@ -83,9 +86,7 @@ class {{ model.name }}(models.Model):
 
 with open(f"generated/{ app_name.lower() }/models.py", "w") as f:
     f.write(model_template.render(models=MODELS))
-
-
-
+print(f"✅ models")
 
 # === serializers.py ===
 for model in MODELS:
@@ -96,9 +97,7 @@ for model in MODELS:
         serializer_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/views/{name.lower()}/api/serializers.py", "w") as f:
         f.write(serializer_template.render(model_name=name, app_name=app_name.lower()))
-
-
-
+print(f"✅ serializers")
 
 # === api views.py ===
 for model in MODELS:
@@ -109,6 +108,7 @@ for model in MODELS:
         views_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/views/{name.lower()}/api/views.py", "w") as f:
         f.write(views_template.render(model_name=name, app_name=app_name.lower()))
+print(f"✅ views api")
 
 # === html views.py ===
 for model in MODELS:
@@ -119,6 +119,7 @@ for model in MODELS:
         views_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/views/{name.lower()}/html/views.py", "w") as f:
         f.write(views_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
+print(f"✅ views")
 
 # === service.py ===
 for model in MODELS:
@@ -129,6 +130,7 @@ for model in MODELS:
         service_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/services/{name.lower()}/services.py", "w") as f:
         f.write(service_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
+print(f"✅ services")
 
 
 # === api - urls.py ===
@@ -140,6 +142,7 @@ for model in MODELS:
         urls_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/urls/{name.lower()}/api/urls.py", "w") as f:
         f.write(urls_template.render(name=name.lower(), app_name=app_name.lower()))
+print(f"✅ urls api")
 
 # === html - urls.py ===
 for model in MODELS:
@@ -150,60 +153,63 @@ for model in MODELS:
         urls_template = Template(f.read())
     with open(f"generated/{ app_name.lower() }/urls/{name.lower()}/html/urls.py", "w") as f:
         f.write(urls_template.render(name=name.lower(), app_name=app_name.lower()))
-
+print(f"✅ urls")
 
 # === apps.py ===
 with open("app/apps.py", "r") as f:
     apps_template = Template(f.read())
 with open(f"generated/{ app_name.lower() }/apps.py", "w") as f:
     f.write(apps_template.render(app_name=app_name.lower()))
+print(f"✅ apps")
 
 # forms
 for model in MODELS:
     name = model["name"]
-    shutil.copy(f"app/forms.py", f"generated/{ app_name.lower() }/forms.py")
-    with open("app/forms.py", "r") as f:
-        forms_template = Template(f.read())
 
-    for form in FORMS:
-        name = form["name"]
-        fields = form["fields"]
-        for field in fields:
-            field_name = field["field"]
-            field_type = field["type"]
-            field_label = field["label"]
-            with open(f"generated/{ app_name.lower() }/forms.py", "w") as f:
-                f.write(forms_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
+    model_template = Template("""
+from django import forms
+{% for model in models %}
+from {{ app_name }}.models import {{ model.name }}
+{% endfor %}
+{% for form in forms %}
+{% if form.field_select %}
+from {{ app_name }}.services.{{ form.field_select.lower() }} import list_{{ form.field_select.lower() }}
+{% endif %}
+{% endfor %}
 
-    # 'name': forms.TextInput(attrs={
-    # 'class': 'form-control',
-    # 'placeholder': 'Product name'
-    # }),
-    # 'description': forms.Textarea(attrs={
-    # 'class': 'form-control',
-    # 'rows': 3,
-    # 'placeholder': 'Write a description'
-    # }),
-    # 'image': forms.FileInput(attrs={
-    # 'class': 'form-control'
-    # }),
-    # 'purchase_date': forms.DateInput(attrs={
-    # 'class': 'form-control',
-    # 'type': 'date'
-    # }),
-    # 'price': forms.NumberInput(attrs={
-    # 'class': 'form-control',
-    # 'step': '0.01',
-    # 'placeholder': 'Price'
-    # }),
-    # 'status': forms.CheckboxInput(attrs={
-    # 'class': 'form-check-input'
-    # }),
-    # 'warehouse': forms.Select(attrs={
-    # 'class': 'form-select'
-    # }),
+{% for form in forms %}
+class {{ form.name }}Form(forms.ModelForm):
+    class Meta:
+        model = {{ form.name }}
+        fields = [
+        {% for field in form.fields %}
+            '{{ field.field }}',
+        {% endfor %}
+        ]
+        widgets = {
+            {% for field in form.fields %}
+            '{{ field.field }}': forms.{{ field.type }}(attrs={
+                'class': 'form-control',
+                'placeholder': '{{ field.label }}'
+            }),
+            {% endfor %}
+        }
+
+    {% if form.field_select %}
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Charger les choix dynamiquement
+        self.fields['{{ form.field_select }}'].queryset = list_{{ form.field_select.lower() }}()
+        # Rendre certains champs optionnels
+        self.fields['{{ form.field_select }}'].empty_label = "{{ form.field_select_label }}"
+    {% endif %}
+
+{% endfor %}
+    """)
 
     with open(f"generated/{ app_name.lower() }/forms.py", "w") as f:
-        f.write(forms_template.render(model_name=name, app_name=app_name.lower(), name=name.lower()))
+        f.write(model_template.render(models=MODELS, app_name=app_name.lower(), forms=FORMS))
+print(f"✅ forms")
 
-print(f"✅ Code généré dans le dossier /generated/{ app_name.lower() }")
+
+print(f"✅ terminer /generated/{ app_name.lower() }")
