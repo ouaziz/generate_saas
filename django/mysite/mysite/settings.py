@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'pages',
     "connexion",
     "apps.invoicing",
+    "apps.crm",
 ]
 
 MIDDLEWARE = [

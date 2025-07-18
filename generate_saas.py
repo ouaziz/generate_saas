@@ -5,6 +5,8 @@ from jinja2 import Environment, FileSystemLoader
 import shutil
 from forms import generate_forms
 from templates import generate_template
+from models import generate_model
+import time
 
 def copy_init_file(path):
     shutil.copy("app/__init__.py", f"{ path }/__init__.py")
@@ -26,31 +28,17 @@ def generate(schema_name):
     FORMS = schema["forms"]
 
     app_name = schema["app_name"]
-    os.makedirs(f"generated/{ app_name }", exist_ok=True)
-    copy_init_file(f"generated/{ app_name }")
-    os.makedirs(f"generated/{ app_name }/migrations", exist_ok=True)
-    copy_init_file(f"generated/{ app_name }/migrations")
+    os.makedirs(f"generated/{ app_name.lower() }", exist_ok=True)
+    copy_init_file(f"generated/{ app_name.lower() }")
+    os.makedirs(f"generated/{ app_name.lower() }/migrations", exist_ok=True)
+    copy_init_file(f"generated/{ app_name.lower() }/migrations")
 
     # # ==== templates list =======#
     generate_template(app_name, TEMPLATES)
     print(f"✅ templates list")
 
     # === models.py ===
-    model_template = Template("""
-from django.db import models
-from connexion.models import BaseUUIDModel
-
-{% for model in models %}
-class {{ model.name }}(BaseUUIDModel):
-    {% for name, field in model.fields.items() %}
-    {{ name }} = models.{{ field }}
-    {% endfor %}
-{% endfor %}
-    """)
-
-    with open(f"generated/{ app_name.lower() }/models.py", "w") as f:
-        f.write(model_template.render(models=MODELS))
-    copy_init_file(f"generated/{ app_name.lower() }")
+    generate_model(MODELS, app_name)
     print(f"✅ models")
 
     # === serializers.py ===
@@ -140,13 +128,34 @@ class {{ model.name }}(BaseUUIDModel):
     print(f"✅ terminer /generated/{ app_name.lower() }")
 
 
+def do_deploement(schema_name):
+    with open(schema_name) as f:
+        schema = json.load(f)
+    app_name = schema["app_name"]
+    if os.path.exists(f"django/mysite/apps/{ app_name.lower() }"):
+        # remove folder django/mysite/apps/{ app_name.lower() }
+        shutil.rmtree(f"django/mysite/apps/{ app_name.lower() }")
+    # copy folder generated to django/mysite/apps
+    shutil.copytree(f"generated/{ app_name.lower() }", f"django/mysite/apps/{ app_name.lower() }")
+    print(f"✅ deployed /django/mysite/apps/{ app_name.lower() }")
+
 # i want to give the name f schema in a prompt
 if __name__ == "__main__":
+
+    # get schema name
     schema_name = input("Enter the schema name: ")
     if not schema_name.endswith(".json"):
         schema_name += ".json"
     if not os.path.exists(schema_name):
         print(f"❌ schema {schema_name} not found")
         exit(1)
+    # pause 1 seconde
+    time.sleep(1)
     clean_folder(schema_name)
+    time.sleep(1)
     generate(schema_name)
+    time.sleep(1)
+    deploy = input("Do you want to deploy the app? (y/n): ")
+    time.sleep(1)
+    if deploy.lower() == "y":
+        do_deploement(schema_name)

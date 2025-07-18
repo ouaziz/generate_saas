@@ -25,8 +25,7 @@
     "forms": [
       {
         "name": "Client",
-        "field_select": "",
-        "field_select_label": "",
+        "selects": [],
         "fields": [
           {"field": "name,TextInput,Client name"},
           {"field": "email,EmailInput,Client email"}
@@ -34,8 +33,9 @@
       },
       {
         "name": "Invoice",
-        "field_select": "client",
-        "field_select_label": "Select a client",
+        "selects": [
+          {"name": "client,Select,Client"}
+        ],
         "fields": [
           {"field": "client,Select,Client"},
           {"field": "amount,NumberInput,Amount"},

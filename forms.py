@@ -11,8 +11,10 @@ from django import forms
 from apps.{{ app_name }}.models import {{ model.name }}
 {% endfor %}
 {% for form in forms %}
-{% if form.field_select %}
-from apps.{{ app_name }}.services.{{ form.field_select.lower() }}.services import list_{{ form.field_select.lower() }}
+{% if form.selects %}
+{% for select in form.selects %}
+from apps.{{ app_name }}.services.{{ select.name.split(",")[0].lower() }}.services import list_{{ select.name.split(",")[0].lower() }}
+{% endfor %}
 {% endif %}
 {% endfor %}
 
@@ -34,13 +36,17 @@ class {{ form.name }}Form(forms.ModelForm):
             {% endfor %}
         }
 
-    {% if form.field_select %}
+    {% if form.selects %}
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Charger les choix dynamiquement
-        self.fields['{{ form.field_select }}'].queryset = list_{{ form.field_select.lower() }}()
+        {% for select in form.selects %}
+        self.fields['{{ select.name.split(",")[0] }}'].queryset = list_{{ select.name.split(",")[0].lower() }}()
+        {% endfor %}
         # Rendre certains champs optionnels
-        self.fields['{{ form.field_select }}'].empty_label = "{{ form.field_select_label }}"
+        {% for select in form.selects %}
+        self.fields['{{ select.name.split(",")[0] }}'].empty_label = "{{ select.name.split(",")[1] }}"
+        {% endfor %}
     {% endif %}
 
 {% endfor %}

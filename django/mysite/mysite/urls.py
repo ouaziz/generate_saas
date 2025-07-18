@@ -25,6 +25,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('invoicing/', include('apps.invoicing.urls.client.html.urls')),
     path('invoicing/', include('apps.invoicing.urls.invoice.html.urls')),
+    path('crm/', include('apps.crm.urls.contact.html.urls')),
+    path('crm/', include('apps.crm.urls.lead.html.urls')),
+    path('crm/', include('apps.crm.urls.task.html.urls')),
 ]
 
 
