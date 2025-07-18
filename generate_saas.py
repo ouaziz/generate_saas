@@ -61,14 +61,14 @@ def generate(schema_name):
 
     # === models.py ===
     model_template = Template("""
-    from django.db import models
+from django.db import models
 
-    {% for model in models %}
-    class {{ model.name }}(models.Model):
-        {% for name, field in model.fields.items() %}
-        {{ name }} = models.{{ field }}
-        {% endfor %}
+{% for model in models %}
+class {{ model.name }}(models.Model):
+    {% for name, field in model.fields.items() %}
+    {{ name }} = models.{{ field }}
     {% endfor %}
+{% endfor %}
     """)
 
     with open(f"generated/{ app_name.lower() }/models.py", "w") as f:
@@ -161,44 +161,44 @@ def generate(schema_name):
         name = model["name"]
 
         model_template = Template("""
-    from django import forms
-    {% for model in models %}
-    from {{ app_name }}.models import {{ model.name }}
-    {% endfor %}
-    {% for form in forms %}
-    {% if form.field_select %}
-    from {{ app_name }}.services.{{ form.field_select.lower() }} import list_{{ form.field_select.lower() }}
-    {% endif %}
-    {% endfor %}
+from django import forms
+{% for model in models %}
+from {{ app_name }}.models import {{ model.name }}
+{% endfor %}
+{% for form in forms %}
+{% if form.field_select %}
+from {{ app_name }}.services.{{ form.field_select.lower() }} import list_{{ form.field_select.lower() }}
+{% endif %}
+{% endfor %}
 
-    {% for form in forms %}
-    class {{ form.name }}Form(forms.ModelForm):
-        class Meta:
-            model = {{ form.name }}
-            fields = [
+{% for form in forms %}
+class {{ form.name }}Form(forms.ModelForm):
+    class Meta:
+        model = {{ form.name }}
+        fields = [
+        {% for field in form.fields %}
+            '{{ field.field }}',
+        {% endfor %}
+        ]
+        widgets = {
             {% for field in form.fields %}
-                '{{ field.field }}',
+            '{{ field.field }}': forms.{{ field.type }}(attrs={
+                'class': 'form-control',
+                'placeholder': '{{ field.label }}'
+            }),
             {% endfor %}
-            ]
-            widgets = {
-                {% for field in form.fields %}
-                '{{ field.field }}': forms.{{ field.type }}(attrs={
-                    'class': 'form-control',
-                    'placeholder': '{{ field.label }}'
-                }),
-                {% endfor %}
-            }
+        }
 
-        {% if form.field_select %}
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            # Charger les choix dynamiquement
-            self.fields['{{ form.field_select }}'].queryset = list_{{ form.field_select.lower() }}()
-            # Rendre certains champs optionnels
-            self.fields['{{ form.field_select }}'].empty_label = "{{ form.field_select_label }}"
-        {% endif %}
+    {% if form.field_select %}
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Charger les choix dynamiquement
+        self.fields['{{ form.field_select }}'].queryset = list_{{ form.field_select.lower() }}()
+        # Rendre certains champs optionnels
+        self.fields['{{ form.field_select }}'].empty_label = "{{ form.field_select_label }}"
+    {% endif %}
 
-    {% endfor %}
+{% endfor %}
         """)
 
         with open(f"generated/{ app_name.lower() }/forms.py", "w") as f:
@@ -209,7 +209,13 @@ def generate(schema_name):
     print(f"✅ terminer /generated/{ app_name.lower() }")
 
 
+# i want to give the name f schema in a prompt
 if __name__ == "__main__":
-    schema_name = "schema.json"
+    schema_name = input("Enter the schema name: ")
+    if not schema_name.endswith(".json"):
+        schema_name += ".json"
+    if not os.path.exists(schema_name):
+        print(f"❌ schema {schema_name} not found")
+        exit(1)
     clean_folder(schema_name)
     generate(schema_name)
