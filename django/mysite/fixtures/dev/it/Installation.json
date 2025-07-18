@@ -1,0 +1,68 @@
+[
+  {
+    "model": "software.installation",
+    "pk": 1,
+    "fields": {
+      "installation_group": 1,
+      "product": 1,
+      "date": "2025-01-01",
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installation",
+    "pk": 2,
+    "fields": {
+      "installation_group": 2,
+      "product": 2,
+      "date": "2025-01-01",
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installation",
+    "pk": 3,
+    "fields": {
+      "installation_group": 3,
+      "product": 3,
+      "date": "2025-01-01",
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installation",
+    "pk": 4,
+    "fields": {
+      "installation_group": 1,
+      "product": 4,
+      "date": "2025-01-01",
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installation",
+    "pk": 5,
+    "fields": {
+      "installation_group": 1,
+      "product": 5,
+      "date": "2025-01-01",
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installation",
+    "pk": 6,
+    "fields": {
+      "installation_group": 2,
+      "product": 6,
+      "date": "2025-01-01",
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  }
+]

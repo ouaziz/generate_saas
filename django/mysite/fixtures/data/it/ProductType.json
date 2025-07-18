@@ -1,0 +1,110 @@
+[
+  {
+    "model": "products.ProductType",
+    "pk": "11111111-1111-1111-1111-111111111111",
+    "fields": {
+      "name": "Physical",
+      "description": "Physical",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "22222222-2222-2222-2222-222222222222",
+    "fields": {
+      "name": "Intangible",
+      "description": "Intangible",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "33333333-3333-3333-3333-333333333333",
+    "fields": {
+      "name": "Financial",
+      "description": "Financial",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "44444444-4444-4444-4444-444444444444",
+    "fields": {
+      "name": "Operating",
+      "description": "Operating",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "55555555-5555-5555-5555-555555555555",
+    "fields": {
+      "name": "Real Estate",
+      "description": "Real Estate",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "66666666-6666-6666-6666-666666666666",
+    "fields": {
+      "name": "Intellectual Property",
+      "description": "Intellectual Property",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "77777777-7777-7777-7777-777777777777",
+    "fields": {
+      "name": "Goodwill",
+      "description": "Goodwill",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "88888888-8888-8888-8888-888888888888",
+    "fields": {
+      "name": "Tangible",
+      "description": "Tangible",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.ProductType",
+    "pk": "99999999-9999-9999-9999-999999999999",
+    "fields": {
+      "name": "Current",
+      "description": "Current",
+      "status": 1,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  }
+]

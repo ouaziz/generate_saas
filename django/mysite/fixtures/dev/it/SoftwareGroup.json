@@ -1,0 +1,72 @@
+[
+  {
+    "model": "software.softwaregroup",
+    "pk": 1,
+    "fields": {
+      "software": 1,
+      "installation_group": 1,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.softwaregroup",
+    "pk": 2,
+    "fields": {
+      "software": 2,
+      "installation_group": 1,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.softwaregroup",
+    "pk": 3,
+    "fields": {
+      "software": 3,
+      "installation_group": 1,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.softwaregroup",
+    "pk": 4,
+    "fields": {
+      "software": 4,
+      "installation_group": 1,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.softwaregroup",
+    "pk": 5,
+    "fields": {
+      "software": 5,
+      "installation_group": 2,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.softwaregroup",
+    "pk": 6,
+    "fields": {
+      "software": 6,
+      "installation_group": 2,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.softwaregroup",
+    "pk": 7,
+    "fields": {
+      "software": 7,
+      "installation_group": 3,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  }
+]

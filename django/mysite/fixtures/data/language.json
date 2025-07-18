@@ -1,0 +1,52 @@
+[
+  {
+    "model": "tenant.language",
+    "fields": {
+      "name": "French",
+      "code": "fr",
+      "status": true,
+      "icon": "tf-icons ri-flag-france-line",
+      "color": "text-primary"
+    }
+  },
+  {
+    "model": "tenant.language",
+    "fields": {
+      "name": "English",
+      "code": "en",
+      "status": true,
+      "icon": "tf-icons ri-flag-uk-line",
+      "color": "text-success"
+    }
+  },
+  {
+    "model": "tenant.language",
+    "fields": {
+      "name": "Spanish",
+      "code": "es",
+      "status": false,
+      "icon": "tf-icons ri-flag-spain-line",
+      "color": "text-info"
+    }
+  },
+  {
+    "model": "tenant.language",
+    "fields": {
+      "name": "German",
+      "code": "de",
+      "status": false,
+      "icon": "tf-icons ri-flag-germany-line",
+      "color": "text-warning"
+    }
+  },
+  {
+    "model": "tenant.language",
+    "fields": {
+      "name": "Arabic",
+      "code": "ar",
+      "status": false,
+      "icon": "tf-icons ri-flag-morocco-line",
+      "color": "text-danger"
+    }
+  }
+]

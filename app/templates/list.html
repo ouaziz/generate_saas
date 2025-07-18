@@ -28,7 +28,7 @@
           <thead class="table-light">
             <tr class="text-nowrap">
               [% for table_column in tables_columns %]
-                <th>[[ table_column.label ]]</th>
+                <th>[[ table_column.name.split(",")[1] ]]</th>
               [% endfor %]
               <th>Actions</th>
             </tr>
@@ -40,7 +40,7 @@
                 [% for table_column in tables_columns %]
                   <td class="text-nowrap fw-medium text-heading">
                     <a href="{% url '[[ name|lower ]]-detail' [[ name|lower ]].id %}">
-                      {{ [[ name|lower ]].[[table_column.name]]|capfirst }}
+                      {{ [[ name|lower ]].[[ table_column.name.split(",")[0] ]]|capfirst }}
                     </a>
                   </td>
                 [% endfor %]

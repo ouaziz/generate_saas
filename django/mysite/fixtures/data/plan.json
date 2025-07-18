@@ -1,0 +1,50 @@
+[
+  {
+    "model": "tenant.Plan",
+    "fields": {
+      "name": "Free",
+      "code": "Free",
+      "is_trial": false,
+      "price": 0,
+      "status": true,
+      "icon": "tf-icons ri-free-line",
+      "color": "text-primary"
+    }
+  },
+  {
+    "model": "tenant.Plan",
+    "fields": {
+      "name": "Basic",
+      "code": "Basic",
+      "is_trial": true,
+      "price": 10,
+      "status": false,
+      "icon": "tf-icons ri-basic-line",
+      "color": "text-success"
+    }
+  },
+  {
+    "model": "tenant.Plan",
+    "fields": {
+      "name": "Premium",
+      "code": "Premium",
+      "is_trial": false,
+      "price": 20,
+      "status": false,
+      "icon": "tf-icons ri-premium-line",
+      "color": "text-info"
+    }
+  },
+  {
+    "model": "tenant.Plan",
+    "fields": {
+      "name": "Enterprise",
+      "code": "Enterprise",
+      "is_trial": false,
+      "price": 30,
+      "status": false,
+      "icon": "tf-icons ri-enterprise-line",
+      "color": "text-warning"
+    }
+  }
+]

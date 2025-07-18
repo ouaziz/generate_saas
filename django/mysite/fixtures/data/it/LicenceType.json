@@ -1,0 +1,28 @@
+[
+  {
+    "model": "software.licencetype",
+    "pk": "11111111-1111-1111-1111-111111111111",
+    "fields": {
+      "name": "Licence Volume",
+      "description": "Licence Volume...",
+      "status": true,
+      "individual": null,
+      "volume": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licencetype",
+    "pk": "22222222-2222-2222-2222-222222222222",
+    "fields": {
+      "name": "Licence Individual",
+      "description": "Licence Individual...",
+      "status": true,
+      "individual": true,
+      "volume": null,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  }
+]

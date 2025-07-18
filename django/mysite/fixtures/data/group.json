@@ -1,0 +1,42 @@
+[
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Administrator",
+      "permissions": [
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Manager",
+      "permissions": [
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "User",
+      "permissions": [
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Support",
+      "permissions": [
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "People",
+      "permissions": [
+      ]
+    }
+  }
+]

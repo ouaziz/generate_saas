@@ -1,0 +1,50 @@
+[
+  {
+    "model": "software.installationgroup",
+    "pk": 1,
+    "fields": {
+      "name": "Default",
+      "description": null,
+      "status": true,
+      "is_default": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installationgroup",
+    "pk": 2,
+    "fields": {
+      "name": "Finance",
+      "description": null,
+      "status": true,
+      "is_default": false,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installationgroup",
+    "pk": 3,
+    "fields": {
+      "name": "HR",
+      "description": null,
+      "status": true,
+      "is_default":  false,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.installationgroup",
+    "pk": 4,
+    "fields": {
+      "name": "IT",
+      "description": null,
+      "status": true,
+      "is_default":  false,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  }
+]

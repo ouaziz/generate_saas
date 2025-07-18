@@ -1,0 +1,78 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$720000$KKRbOuHkO5lxvYKCCMB0sO$b65gzEXS77jB2fRFU0WeC7gg2oFU0E4mvak1zVo0KEk=",
+    "last_login": "2023-11-20T08:25:46.625Z",
+    "is_superuser": false,
+    "username": "admin",
+    "first_name": "super",
+    "last_name": "admin",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-11-04T09:53:40Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$720000$KKRbOuHkO5lxvYKCCMB0sO$b65gzEXS77jB2fRFU0WeC7gg2oFU0E4mvak1zVo0KEk=",
+    "last_login": "2023-11-04T11:30:48.040Z",
+    "is_superuser": false,
+    "username": "manager",
+    "first_name": "john",
+    "last_name": "carter",
+    "email": "manager@admin.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-11-04T10:58:10.836Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$720000$KKRbOuHkO5lxvYKCCMB0sO$b65gzEXS77jB2fRFU0WeC7gg2oFU0E4mvak1zVo0KEk=",
+    "last_login": "2023-11-04T11:30:48.040Z",
+    "is_superuser": false,
+    "username": "user",
+    "first_name": "patrick",
+    "last_name": "lobomba",
+    "email": "user@admin.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-11-04T10:58:10.836Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$720000$KKRbOuHkO5lxvYKCCMB0sO$b65gzEXS77jB2fRFU0WeC7gg2oFU0E4mvak1zVo0KEk=",
+    "last_login": "2023-11-04T11:30:48.040Z",
+    "is_superuser": false,
+    "username": "support",
+    "first_name": "bifita",
+    "last_name": "nikita",
+    "email": "support@admin.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-11-04T10:58:10.836Z",
+    "groups": [
+      4
+    ],
+    "user_permissions": []
+  }
+}
+]

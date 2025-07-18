@@ -1,0 +1,32 @@
+[
+  {
+    "model": "tenant.timezone",
+    "fields": {
+      "name": "GMT",
+      "code": "0",
+      "status": true,
+      "icon": "tf-icons ri-time-line",
+      "color": "text-primary"
+    }
+  },
+  {
+    "model": "tenant.timezone",
+    "fields": {
+      "name": "Canada EST",
+      "code": "-5",
+      "status": true,
+      "icon": "tf-icons ri-time-line",
+      "color": "text-primary"
+    }
+  },
+  {
+    "model": "tenant.timezone",
+    "fields": {
+      "name": "UTC/GMT +1 hour",
+      "code": "+1",
+      "status": true,
+      "icon": "tf-icons ri-time-line",
+      "color": "text-primary"
+    }
+  }
+]

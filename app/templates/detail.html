@@ -14,8 +14,8 @@
     <div class="card-body">
       <dl class="row">
         [% for table_column in tables_columns %]
-          <dt class="col-sm-3">[[ table_column.label ]]</dt>
-          <dd class="col-sm-9">[[ name ]].[[ table_column.name ]]</dd>
+          <dt class="col-sm-3">[[ table_column.name.split(",")[1] ]]</dt>
+          <dd class="col-sm-9">[[ name ]].[[ table_column.name.split(",")[0] ]]</dd>
         [% endfor %]
         <dt class="col-sm-3">Created at</dt>
         <dd class="col-sm-9">[[ name ]].created_at</dd>

@@ -3,6 +3,8 @@ import os
 from jinja2 import Template
 from jinja2 import Environment, FileSystemLoader
 import shutil
+from forms import generate_forms
+from templates import generate_template
 
 def copy_init_file(path):
     shutil.copy("app/__init__.py", f"{ path }/__init__.py")
@@ -28,35 +30,7 @@ def generate(schema_name):
     copy_init_file(f"generated/{ app_name }")
 
     # # ==== templates list =======#
-    env = Environment(
-        loader=FileSystemLoader("app/templates"),
-        block_start_string="[%", 
-        block_end_string="%]", 
-        variable_start_string="[[", 
-        variable_end_string="]]",
-        autoescape=False,
-    )
-
-    for template in TEMPLATES:
-        name = template["name"]
-        os.makedirs(f"generated/{ app_name }/templates/{template['name']}", exist_ok=True)
-        template_file_list = env.get_template(f"list.html")
-        template_file_detail = env.get_template(f"detail.html")
-        template_file_form = env.get_template(f"form.html")
-        template_file_delete = env.get_template(f"confirm_delete.html")
-        html_list = template_file_list.render(name=name, app_name=app_name.lower(), tables_columns=template["tables_columns"])
-        html_detail = template_file_detail.render(name=name, app_name=app_name.lower(), tables_columns=template["tables_columns"])
-        html_form = template_file_form.render(name=name, app_name=app_name.lower())
-        html_delete = template_file_delete.render(name=name, app_name=app_name.lower())
-
-        with open(f"generated/{ app_name.lower() }/templates/{template['name']}/list.html", "w") as f:
-            f.write(html_list)
-        with open(f"generated/{ app_name.lower() }/templates/{template['name']}/detail.html", "w") as f:
-            f.write(html_detail)
-        with open(f"generated/{ app_name.lower() }/templates/{template['name']}/form.html", "w") as f:
-            f.write(html_form)
-        with open(f"generated/{ app_name.lower() }/templates/{template['name']}/confirm_delete.html", "w") as f:
-            f.write(html_delete)
+    generate_template(app_name, TEMPLATES)
     print(f"✅ templates list")
 
     # === models.py ===
@@ -157,55 +131,8 @@ class {{ model.name }}(models.Model):
     print(f"✅ apps")
 
     # forms
-    for model in MODELS:
-        name = model["name"]
-
-        model_template = Template("""
-from django import forms
-{% for model in models %}
-from {{ app_name }}.models import {{ model.name }}
-{% endfor %}
-{% for form in forms %}
-{% if form.field_select %}
-from {{ app_name }}.services.{{ form.field_select.lower() }} import list_{{ form.field_select.lower() }}
-{% endif %}
-{% endfor %}
-
-{% for form in forms %}
-class {{ form.name }}Form(forms.ModelForm):
-    class Meta:
-        model = {{ form.name }}
-        fields = [
-        {% for field in form.fields %}
-            '{{ field.field }}',
-        {% endfor %}
-        ]
-        widgets = {
-            {% for field in form.fields %}
-            '{{ field.field }}': forms.{{ field.type }}(attrs={
-                'class': 'form-control',
-                'placeholder': '{{ field.label }}'
-            }),
-            {% endfor %}
-        }
-
-    {% if form.field_select %}
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Charger les choix dynamiquement
-        self.fields['{{ form.field_select }}'].queryset = list_{{ form.field_select.lower() }}()
-        # Rendre certains champs optionnels
-        self.fields['{{ form.field_select }}'].empty_label = "{{ form.field_select_label }}"
-    {% endif %}
-
-{% endfor %}
-        """)
-
-        with open(f"generated/{ app_name.lower() }/forms.py", "w") as f:
-            f.write(model_template.render(models=MODELS, app_name=app_name.lower(), forms=FORMS))
+    generate_forms(app_name, MODELS, FORMS)
     print(f"✅ forms")
-
-
     print(f"✅ terminer /generated/{ app_name.lower() }")
 
 

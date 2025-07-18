@@ -1,0 +1,63 @@
+[
+  {
+    "model": "tenant.currency",
+    "fields": {
+      "name": "Dollar Américain",
+      "code": "USD",
+      "status": true,
+      "icon": "ri-money-dollar-box-line",
+      "color": "text-primary"
+    }
+  },
+    {
+    "model": "tenant.currency",
+    "fields": {
+      "name": "Euro",
+      "code": "EUR",
+      "status": false,
+      "icon": "ri-money-euro-box-line",
+      "color": "text-success"
+    }
+  },
+    {
+    "model": "tenant.currency",
+    "fields": {
+      "name": "Great Britain Pound",
+      "code": "GBP",
+      "status": false,
+      "icon": "ri-money-pound-box-line",
+      "color": "text-info"
+    }
+  },
+     {
+    "model": "tenant.currency",
+    "fields": {
+      "name": "Dollar Canadien",
+      "code": "CAD",
+      "status": true,
+      "icon": "ri-money-dollar-box-line",
+      "color": "text-primary"
+    }
+  },
+ {
+    "model": "tenant.currency",
+    "fields": {
+      "name": "Dirham Marocain",
+      "code": "MAD",
+      "status": false,
+      "icon": "ri-money-dirham-box-line",
+      "color": "text-warning"
+    }
+  },
+  {
+    "model": "tenant.currency",
+    "fields": {
+      "name": "Dirham Emirati",
+      "code": "AED",
+      "status": false,
+      "icon": "ri-money-dirham-box-line",
+      "color": "text-warning"
+    }
+  }
+
+]

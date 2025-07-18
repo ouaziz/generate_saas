@@ -1,0 +1,146 @@
+[
+  {
+    "model": "software.licence",
+    "pk": 1,
+    "fields": {
+      "name": "Microsoft Office A5",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 1,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 2,
+    "fields": {
+      "name": "Microsoft Office A1",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 1,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 3,
+    "fields": {
+      "name": "Microsoft Office A2",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 1,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 4,
+    "fields": {
+      "name": "Microsoft Office A3",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 1,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 5,
+    "fields": {
+      "name": "Adobe Creative Cloud",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 2,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 6,
+    "fields": {
+      "name": "Adobe Photoshop",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 2,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 7,
+    "fields": {
+      "name": "Adobe Illustrator",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 2,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 8,
+    "fields": {
+      "name": "Adobe InDesign",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-05-01",
+      "licence_type": 2,
+      "description": null,
+      "is_default": false,
+      "status": false,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "software.licence",
+    "pk": 9,
+    "fields": {
+      "name": "Microsoft Windows 11",
+      "licence_key": "234523523452345",
+      "quantity": 10,
+      "expiration_date": "2026-01-01",
+      "licence_type": 1,
+      "description": null,
+      "is_default": false,
+      "status": true,
+      "created_at": "2025-01-01T00:00:00",
+      "updated_at": "2025-01-01T00:00:00"
+    }
+  }
+]

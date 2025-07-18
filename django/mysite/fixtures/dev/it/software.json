@@ -1,0 +1,178 @@
+[
+  {
+    "model": "software.software",
+    "pk": 1,
+    "fields": {
+      "name": "Office 365",
+      "description": "Office 365",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "3234",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 2,
+    "fields": {
+      "name": "Office 2019",
+      "description": "Office 2019",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2019",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 3,
+    "fields": {
+      "name": "Office 2016",
+      "description": "Office 2016",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2016",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 4,
+    "fields": {
+      "name": "Adobe Acrobat",
+      "description": "Adobe Acrobat",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 5,
+    "fields": {
+      "name": "Notepad++",
+      "description": "Notepad++",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 6,
+    "fields": {
+      "name": "Sublime Text",
+      "description": "Sublime Text",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 7,
+    "fields": {
+      "name": "Visual Studio Code",
+      "description": "Visual Studio Code",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 8,
+    "fields": {
+      "name": "Visual Studio",
+      "description": "Visual Studio",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 9,
+    "fields": {
+      "name": "Eclipse",
+      "description": "Eclipse",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 10,
+    "fields": {
+      "name": "IntelliJ IDEA",
+      "description": "IntelliJ IDEA",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  },
+  {
+    "model": "software.software",
+    "pk": 11,
+    "fields": {
+      "name": "PyCharm",
+      "description": "PyCharm",
+      "is_default": false,
+      "status": true,
+      "is_license": true,
+      "licence": 1,
+      "version": "2013",
+      "editor": "Microsoft",
+      "created_at": "2025-01-16T00:27:17.374",
+      "updated_at": "2025-01-16T23:12:52.067"
+    }
+  }
+]

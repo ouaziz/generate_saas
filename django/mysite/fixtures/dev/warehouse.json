@@ -1,0 +1,59 @@
+[
+  {
+    "model": "products.Warehouse",
+    "pk": "11111111-1111-1111-1111-111111111111",
+    "fields": {
+      "name": "Warehouse 1",
+      "address": "Address 1",
+      "city": "City 1",
+      "state": "State 1",
+      "country": "Portugal",
+      "postal_code": "Postal Code 1",
+      "phone": "Phone 1",
+      "email": "email@admin.com",
+      "website": "Website 1",
+      "status": true,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.Warehouse",
+    "pk": "22222222-2222-2222-2222-222222222222",
+    "fields": {
+      "name": "Warehouse 2",
+      "address": "Address 2",
+      "city": "City 2",
+      "state": "State 2",
+      "country": "Morocco",
+      "postal_code": "Postal Code 2",
+      "phone": "Phone 2",
+      "email": "email@admin.com",
+      "website": "Website 2",
+      "status": true,
+      "is_default": false,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.Warehouse",
+    "pk": "33333333-3333-3333-3333-333333333333",
+    "fields": {
+      "name": "Warehouse 3",
+      "address": "Address 3",
+      "city": "City 3",
+      "state": "State 3",
+      "country": "Canada",
+      "postal_code": "Postal Code 3",
+      "phone": "Phone 3",
+      "email": "email@admin.com",
+      "website": "Website 3",
+      "status": true,
+      "is_default": true,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  }
+]

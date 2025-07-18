@@ -1,0 +1,60 @@
+{
+    "project": "SaaS Invoicing",
+    "app_name": "invoicing",
+    "models": [
+      {
+        "name": "Client",
+        "fields": {
+          "name": "CharField(max_length=255)",
+          "email": "EmailField(unique=True)"
+        }
+      },
+      {
+        "name": "Invoice",
+        "fields": {
+          "client": "ForeignKey(Client,on_delete=CASCADE)",
+          "amount": "DecimalField(max_digits=10,decimal_places=2)",
+          "status": "CharField(choices=[('paid', 'Paid'), ('draft', 'Draft'), ('pending', 'Pending')])"
+        }
+      }
+    ],
+    "forms": [
+      {
+        "name": "Client",
+        "field_select": "",
+        "field_select_label": "",
+        "fields": [
+          {"field": "name,TextInput,Client name"},
+          {"field": "email,EmailInput,Client email"}
+        ]
+      },
+      {
+        "name": "Invoice",
+        "field_select": "client",
+        "field_select_label": "Select a client",
+        "fields": [
+          {"field": "client,Select,Client"},
+          {"field": "amount,NumberInput,Amount"},
+          {"field": "status,Select,Status"}
+        ]
+      }
+    ],
+    "templates": [
+      {
+        "name": "client",
+        "tables_columns": [
+          {"name": "name,Name"},
+          {"name": "email,Email"}
+        ]
+      },
+      {
+        "name": "invoice",
+        "tables_columns": [
+          {"name": "client,Client"},
+          {"name": "amount,Amount"},
+          {"name": "status,Status"}
+        ]
+      }
+    ]
+  }
+  
