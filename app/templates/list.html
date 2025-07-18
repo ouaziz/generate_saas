@@ -1,11 +1,12 @@
 {% extends 'backoffice/master.html' %}
 
-{{ loads }}
+{% load static %}
+{% load i18n %}
 
-{% block title %}{{ name }}{% endblock title %}
+{% block title %}[[ name ]]{% endblock title %}
 
 {% block header %}
-  {% include 'backoffice/header.html' with title="{{ name }}" %}
+  {% include 'backoffice/header.html' with title="[[ name ]]" %}
 {% endblock %}
 
 {% block layout %}
@@ -14,40 +15,44 @@
 <div class="container-xl px-4 ">
   {% include 'topbar/topbar.html' %}
 
-  {% if perms.products.view_productbrand %}
+  {% if perms.[[app_name]].view_[[name]] %}
     <div class="card mb-4 card-header-actions">
       <div class="card-header">
-        {{ name }}
+        [[ name ]]
         <div class="d-flex gap-2">
-          <a href="{% url '{{ name }}-create' %}" class="btn btn-secondary btn-sm ms-2">Add {{ name }}</a>
+          <a href="{% url '[[ name|lower ]]-create' %}" class="btn btn-secondary btn-sm ms-2">Add [[ name ]]</a>
         </div>
       </div>
       <div class="card-body">
         <table id="datatablesSimple">
           <thead class="table-light">
             <tr class="text-nowrap">
-              <th>{{ name }}</th>
+              [% for table_column in tables_columns %]
+                <th>[[ table_column.label ]]</th>
+              [% endfor %]
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {% if {{ name }}s %}
-              {% for {{ name }} in {{ name }}s %}
+            {% if [[ name|lower ]]s %}
+              {% for [[ name|lower ]] in [[ name|lower ]]s %}
               <tr>
-                <td class="text-nowrap fw-medium text-heading">
-                  <a href="{% url '{{ name }}-detail' {{ name }}.id %}">
-                    {{ {{ name }}.name|capfirst }}
-                  </a>
-                </td>
+                [% for table_column in tables_columns %]
+                  <td class="text-nowrap fw-medium text-heading">
+                    <a href="{% url '[[ name|lower ]]-detail' [[ name|lower ]].id %}">
+                      {{ [[ name|lower ]].[[table_column.name]]|capfirst }}
+                    </a>
+                  </td>
+                [% endfor %]
                 <td>
                   <div class="d-inline-block text-nowrap">
-                    {% if perms.products.change_productbrand %}
-                      <a href="{% url '{{ name }}-edit' {{ name }}.id %}" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
+                    {% if perms.[[app_name]].change_[[name|lower]] %}
+                      <a href="{% url '[[ name|lower ]]-edit' [[ name|lower ]].id %}" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </a>
                     {% endif %}
-                    {% if perms.products.delete_productbrand %}
-                      <a href="{% url '{{ name }}-delete' {{ name }}.id %}" class="btn btn-datatable btn-icon btn-transparent-dark">
+                    {% if perms.[[app_name]].delete_[[name|lower]] %}
+                      <a href="{% url '[[ name|lower ]]-delete' [[ name|lower ]].id %}" class="btn btn-datatable btn-icon btn-transparent-dark">
                         <i class="fa-regular fa-trash-can"></i>
                       </a>
                     {% endif %}
@@ -58,7 +63,7 @@
             {% else %}
               <tr>
                 <td colspan="3" class="text-center">
-                  No {{ name }}s found
+                  No [[ name|lower ]]s found
                 </td>
               </tr>
             {% endif %}

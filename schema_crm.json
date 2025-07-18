@@ -1,55 +1,53 @@
 {
-    "project": "SaaS Invoicing",
-    "app_name": "invoicing",
+    "project": "SaaS CRM",
+    "app_name": "crm",
     "models": [
       {
-        "name": "Client",
+        "name": "Member",
         "fields": {
           "name": "CharField(max_length=255)",
-          "email": "EmailField(unique=True)"
+          "email": "EmailField(unique=True)",
+          "created_at": "DateTimeField(auto_now_add=True)",
+          "updated_at": "DateTimeField(auto_now=True)"
         }
       },
       {
-        "name": "Invoice",
+        "name": "Contact",
         "fields": {
-          "client": "ForeignKey(Client,on_delete=CASCADE)",
-          "amount": "DecimalField(max_digits=10,decimal_places=2)",
-          "status": "CharField(choices=[('paid', 'Paid'), ('draft', 'Draft'), ('pending', 'Pending')])"
+          "member": "ForeignKey(Member,on_delete=CASCADE)",
+          "status": "BooleanField(default=False)",
+          "created_at": "DateTimeField(auto_now_add=True)",
+          "updated_at": "DateTimeField(auto_now=True)"
         }
       }
     ],
     "forms": [
       {
-        "name": "Client",
+        "name": "Member",
         "field_select": "",
         "field_select_label": "",
         "fields": [
           {
             "field": "name",
             "type": "TextInput",
-            "label": "Client name"
+            "label": "Member name"
           },
           {
             "field": "email",
             "type": "EmailInput",
-            "label": "Client email"
+            "label": "Member email"
           }
         ]
       },
       {
-        "name": "Invoice",
-        "field_select": "client",
-        "field_select_label": "Select a client",
+        "name": "Contact",
+        "field_select": "member",
+        "field_select_label": "Select a member",
         "fields": [
           {
-            "field": "client",
+            "field": "member",
             "type": "Select",
-            "label": "Client"
-          },
-          {
-            "field": "amount",
-            "type": "NumberInput",
-            "label": "Amount"
+            "label": "Member"
           },
           {
             "field": "status",
@@ -61,7 +59,7 @@
     ],
     "templates": [
       {
-        "name": "client",
+        "name": "members",
         "tables_columns": [
           {
             "name": "name",
@@ -74,15 +72,11 @@
         ]
       },
       {
-        "name": "invoice",
+        "name": "contacts",
         "tables_columns": [
           {
-            "name": "client",
-            "label": "Client"
-          },
-          {
-            "name": "amount",
-            "label": "Amount"
+            "name": "member",
+            "label": "Member"
           },
           {
             "name": "status",

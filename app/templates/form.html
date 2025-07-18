@@ -1,28 +1,29 @@
 {% extends 'backoffice/master.html' %}
 
-{{ loads }}
+{% load static %}
+{% load i18n %}
 
 {% block title %}
-  {% if object %}Edit {{ name }}{% else %}Add {{ name }}{% endif %}
+  {% if object %}Edit [[ name ]] {% else %}Add [[ name ]] {% endif %}
 {% endblock %}
 {% block header %}
-  {% include 'backoffice/header.html' with title=object|yesno:'Edit {{ name }},Add {{ name }}' %}
+  {% include 'backoffice/header.html' with title=object|yesno:'Edit [[ name ]],Add [[ name ]] ' %}
 {% endblock %}
 {% block layout %}
 {% include 'backoffice/message.html' %}
 <div class="container-xl px-4 ">
   <div class="card mb-4">
-    <div class="card-header">{% if object %}Edit {{ name }}{% else %}Add {{ name }}{% endif %}</div>
+    <div class="card-header">{% if object %}Edit [[ name ]] {% else %}Add [[ name ]] {% endif %}</div>
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         {% if object %}
-          <button type="submit" class="btn  btn-primary">Update {{ name }}</button>
+          <button type="submit" class="btn  btn-primary">Update [[ name ]]</button>
         {% else %}
-          <button type="submit" class="btn  btn-primary">Create {{ name }}</button>
+          <button type="submit" class="btn  btn-primary">Create [[ name ]]</button>
         {% endif %}
-        <a href="{% url '{{ name|lower }}-list' %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url '[[ name|lower ]]-list' %}" class="btn btn-secondary">Cancel</a>
       </form>
     </div>
   </div>
