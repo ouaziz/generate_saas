@@ -1,5 +1,5 @@
 from django.urls import path
-from {{ app_name }}.views.{{ name }}.html.views import (
+from apps.{{ app_name }}.views.{{ name }}.html.views import (
     List, Detail,
     Create, Update, Delete,
 )

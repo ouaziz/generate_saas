@@ -34,3 +34,4 @@ Werkzeug
 django-debug-toolbar
 # api
 djangorestframework-simplejwt
+jinja2

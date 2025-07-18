@@ -1,9 +1,9 @@
-from {{ app_name }}.models import {{ model_name }}
+from apps.{{ app_name }}.models import {{ model_name }}
 from django.http import Http404
 
-def list_{{ model_name.lower() }}(is_accessory=False):
+def list_{{ model_name.lower() }}():
     """Retourne le queryset complet (ou ajoute tes filtres ici)."""
-    return {{ model_name }}.objects.filter(is_accessory=is_accessory)
+    return {{ model_name }}.objects.all()
 
 def get_{{ model_name.lower() }}(pk):
     try:

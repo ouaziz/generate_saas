@@ -15,14 +15,14 @@
       <dl class="row">
         [% for table_column in tables_columns %]
           <dt class="col-sm-3">[[ table_column.name.split(",")[1] ]]</dt>
-          <dd class="col-sm-9">[[ name ]].[[ table_column.name.split(",")[0] ]]</dd>
+          <dd class="col-sm-9">{{[[ name ]].[[ table_column.name.split(",")[0] ]]}}</dd>
         [% endfor %]
         <dt class="col-sm-3">Created at</dt>
-        <dd class="col-sm-9">[[ name ]].created_at</dd>
+        <dd class="col-sm-9">{{[[ name ]].created_at}}</dd>
         <dt class="col-sm-3">Updated at</dt>
-        <dd class="col-sm-9">[[ name ]].updated_at</dd>
+        <dd class="col-sm-9">{{[[ name ]].updated_at}}</dd>
       </dl>
-      <a href="{% url '[[ name|lower ]]-edit' [[ name|lower ]].id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url '[[ name|lower ]]-update' [[ name|lower ]].id %}" class="btn btn-primary">Edit</a>
       <a href="{% url '[[ name|lower ]]-list' %}" class="btn btn-secondary">Back to list</a>
     </div>
   </div>

@@ -8,11 +8,11 @@ def generate_forms(app_name, MODELS, FORMS):
         model_template = Template("""
 from django import forms
 {% for model in models %}
-from {{ app_name }}.models import {{ model.name }}
+from apps.{{ app_name }}.models import {{ model.name }}
 {% endfor %}
 {% for form in forms %}
 {% if form.field_select %}
-from {{ app_name }}.services.{{ form.field_select.lower() }} import list_{{ form.field_select.lower() }}
+from apps.{{ app_name }}.services.{{ form.field_select.lower() }}.services import list_{{ form.field_select.lower() }}
 {% endif %}
 {% endfor %}
 

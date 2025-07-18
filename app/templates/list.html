@@ -13,7 +13,6 @@
 {% include 'backoffice/message.html' %}
 
 <div class="container-xl px-4 ">
-  {% include 'topbar/topbar.html' %}
 
   {% if perms.[[app_name]].view_[[name]] %}
     <div class="card mb-4 card-header-actions">
@@ -24,6 +23,7 @@
         </div>
       </div>
       <div class="card-body">
+        {% if [[ name|lower ]]s.count > 0 %}
         <table id="datatablesSimple">
           <thead class="table-light">
             <tr class="text-nowrap">
@@ -34,7 +34,6 @@
             </tr>
           </thead>
           <tbody>
-            {% if [[ name|lower ]]s %}
               {% for [[ name|lower ]] in [[ name|lower ]]s %}
               <tr>
                 [% for table_column in tables_columns %]
@@ -47,7 +46,7 @@
                 <td>
                   <div class="d-inline-block text-nowrap">
                     {% if perms.[[app_name]].change_[[name|lower]] %}
-                      <a href="{% url '[[ name|lower ]]-edit' [[ name|lower ]].id %}" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
+                      <a href="{% url '[[ name|lower ]]-update' [[ name|lower ]].id %}" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </a>
                     {% endif %}
@@ -60,15 +59,11 @@
                 </td>
               </tr>
               {% endfor %}
-            {% else %}
-              <tr>
-                <td colspan="3" class="text-center">
-                  No [[ name|lower ]]s found
-                </td>
-              </tr>
-            {% endif %}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+          {% else %}
+            No [[ name|lower ]]s found
+          {% endif %}
       </div>
     </div>
   {% endif %}

@@ -28,6 +28,8 @@ def generate(schema_name):
     app_name = schema["app_name"]
     os.makedirs(f"generated/{ app_name }", exist_ok=True)
     copy_init_file(f"generated/{ app_name }")
+    os.makedirs(f"generated/{ app_name }/migrations", exist_ok=True)
+    copy_init_file(f"generated/{ app_name }/migrations")
 
     # # ==== templates list =======#
     generate_template(app_name, TEMPLATES)
@@ -36,9 +38,10 @@ def generate(schema_name):
     # === models.py ===
     model_template = Template("""
 from django.db import models
+from connexion.models import BaseUUIDModel
 
 {% for model in models %}
-class {{ model.name }}(models.Model):
+class {{ model.name }}(BaseUUIDModel):
     {% for name, field in model.fields.items() %}
     {{ name }} = models.{{ field }}
     {% endfor %}
@@ -117,6 +120,7 @@ class {{ model.name }}(models.Model):
         os.makedirs(f"generated/{ app_name.lower() }/urls/{name.lower()}/html", exist_ok=True)
         copy_init_file(f"generated/{ app_name.lower() }/urls/{name.lower()}/html")
         shutil.copy(f"app/urls/html/urls.py", f"generated/{ app_name.lower() }/urls/{name.lower()}/html/urls.py")
+        print(f"add this to url mysite/urls.py ==> path('', include('apps.{ app_name.lower() }.urls.{name.lower()}.html.urls')),")
         with open("app/urls/html/urls.py", "r") as f:
             urls_template = Template(f.read())
         with open(f"generated/{ app_name.lower() }/urls/{name.lower()}/html/urls.py", "w") as f:

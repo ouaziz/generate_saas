@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     "connexion",
+    "apps.invoicing",
 ]
 
 MIDDLEWARE = [

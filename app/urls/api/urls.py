@@ -1,6 +1,6 @@
 
 from rest_framework.routers import DefaultRouter
-from {{ app_name }}.views.{{ name }}.api.views import *
+from apps.{{ app_name }}.views.{{ name }}.api.views import *
 from django.urls import path, include
 
 router = DefaultRouter()

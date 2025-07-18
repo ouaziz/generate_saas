@@ -23,6 +23,8 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('connexion/', include('connexion.urls')),
     path('admin/', admin.site.urls),
+    path('invoicing/', include('apps.invoicing.urls.client.html.urls')),
+    path('invoicing/', include('apps.invoicing.urls.invoice.html.urls')),
 ]
 
 
